@@ -32,9 +32,6 @@
       <time v-if="createTime" datetime="2019-02-22" class="time-text">{{
         postTime.createTime + ': ' + createTime
       }}</time>
-      <time v-if="lastUpdated" datetime="2019-02-22" class="time-text">{{
-        postTime.lastUpdated + ': ' + lastUpdated
-      }}</time>
     </div>
   </article>
 </template>
@@ -56,12 +53,6 @@ export default {
     },
     createTime() {
       return this.$frontmatter.date && formatDate(this.$frontmatter.date)
-    },
-    lastUpdated() {
-      return (
-        this.$page.lastUpdated &&
-        formatDate(this.$page.lastUpdated.split(' ')[0])
-      )
     },
     postTime() {
       return this.$themeConfig.postTime
