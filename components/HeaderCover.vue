@@ -8,7 +8,7 @@
       <img v-if="logoImg" :src="logoImg" class="title-img" />
       <span v-else class="title-text">{{ $title }}</span>
     </h1>
-    <h2 class="cover-text">{{ $site.description }}</h2>
+    <h2 class="cover-text">{{ $site.description || JSON.stringify($site.frontmatter) }}</h2>
   </section>
 </template>
 
@@ -44,8 +44,10 @@ export default {
     .title-img
       height ($coverHeight / 5)
     .title-text
-      font-size 2rem
+      font-size 3rem
       color $whiteColor
+      -webkit-text-fill-color $blackColor
+      -webkit-text-stroke 1.5px $whiteColor
   .cover-text
     margin-top .5rem;
     font-size 1.2rem

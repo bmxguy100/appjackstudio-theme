@@ -21,7 +21,8 @@
           </router-link>
         </div>
         <h2 class="content-title">{{ item.title }}</h2>
-        <div v-html="item.excerpt" class="content"></div>
+        <!-- <div v-html="item.excerpt" class="content"></div> -->
+        <time class="content">{{ formatDate(item.frontmatter.date) }}</time>
         <div v-if="getTags(item.frontmatter)" class="content-tags">
           <router-link
             v-for="(item, index) in getTags(item.frontmatter)"
@@ -37,7 +38,7 @@
 </template>
 
 <script>
-import { getCategories, getTags } from '@theme/lib/util'
+import { getCategories, getTags, formatDate } from '@theme/lib/util'
 
 export default {
   name: 'List',
@@ -47,7 +48,8 @@ export default {
     },
     getTags(item) {
       return getTags(item)
-    }
+    },
+    formatDate
   }
 }
 </script>
@@ -133,8 +135,8 @@ export default {
         max-height $listCardHeight
         overflow hidden
         font-size .9rem
+        color $textDarkColor
 .cover-list
-  margin-top -2rem
   min-height "calc(100vh - 2.5rem - %s)" % $coverHeight
 @media (min-width $phoneWidth)
   .home-list

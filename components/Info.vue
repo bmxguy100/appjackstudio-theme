@@ -1,9 +1,6 @@
 <template>
-  <section
-    :style="style"
-    :class="{ 'no-bg': !$frontmatter.image }"
-    class="info"
-  >
+  <section class="info">
+    <!-- TODO: INSERT COVER IMAGE HERE? -->
     <info-content></info-content>
     <info-nav></info-nav>
     <Vssue
@@ -36,12 +33,12 @@ export default {
 
 <style lang="stylus" scoped>
 .info
-  padding ($coverHeight / 1.6 + $headerHeight) 0.5rem 2rem
+  padding ($headerHeight + 2rem) 0.5rem 2rem
   background-size cover
   background-position center
   background-attachment fixed
   .info-content
-    min-height "calc(100vh - 9.95rem - %s)" % ($coverHeight / 1.6)
+    min-height "calc(100vh - 8.45rem - %s)" % $headerHeight
   .info-vssue
     margin-top 3rem
     padding 2rem
@@ -52,10 +49,7 @@ export default {
     @media (prefers-color-scheme: dark)
       background $whiteDarkColor
       box-shadow 0px 0px 8px $shadowDarkColor
-.no-bg
-  padding-top ($headerHeight + 2rem)
-  .info-content
-    min-height "calc(100vh - 8.45rem - %s)" % $headerHeight
+
 @media (max-width $phoneWidth)
   .info
     .info-vssue
