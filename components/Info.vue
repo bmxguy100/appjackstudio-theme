@@ -1,10 +1,10 @@
 <template>
   <section class="info">
     <!-- TODO: INSERT COVER IMAGE HERE? -->
-    <info-content></info-content>
-    <info-nav></info-nav>
+    <info-content :plain="plain"></info-content>
+    <info-nav v-if="!plain"></info-nav>
     <Vssue
-      v-if="$themeConfig.useVssue && $list.total"
+      v-if="$themeConfig.useVssue && $list.total && !plain"
       title="comment"
       class="main info-vssue"
     ></Vssue>
@@ -17,6 +17,9 @@ import InfoNav from '@theme/components/InfoNav.vue'
 
 export default {
   name: 'Info',
+  props: {
+    plain: Boolean
+  },
   components: {
     InfoContent,
     InfoNav

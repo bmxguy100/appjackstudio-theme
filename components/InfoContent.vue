@@ -1,5 +1,8 @@
 <template>
-  <article class="main info-content">
+  <article class="main info-content" v-if="plain">
+    <Content class="content" />
+  </article>
+  <article class="main info-content" v-else>
     <div class="content-header">
       <h1 class="header-title">{{ $page.title }}</h1>
     </div>
@@ -41,6 +44,9 @@ import { getCategories, getTags, formatDate } from '@theme/lib/util'
 
 export default {
   name: 'InfoContent',
+  props: {
+    plain: Boolean
+  },
   computed: {
     categories() {
       return getCategories(this.$frontmatter)
