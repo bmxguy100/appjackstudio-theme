@@ -7,7 +7,7 @@
       :class="{ 'no-image': !item.frontmatter.image }"
       class="flex-y list-item"
     >
-      <div class="flex-xcc item-img">
+      <div class="flex-xcc item-img" v-if="item.frontmatter.image">
         <img :src="item.frontmatter.image" :alt="item.title" class="img" />
       </div>
       <article class="flex-yb item-content">
